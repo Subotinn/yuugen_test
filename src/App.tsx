@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import '@fontsource/poppins';
+
+import { DashboardPage } from './pages/DashboardPage';
+import { CreatePage } from './pages/CreatePage';
+import { LayoutPage } from './pages/LayoutPage';
+
+import './i18n';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LayoutPage />}>
+                    <Route index element={<DashboardPage />} />
+                    <Route path="create" element={<CreatePage />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
